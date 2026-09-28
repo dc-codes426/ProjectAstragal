@@ -54,3 +54,6 @@ Where our research identifies gaps, we fill them. We provide resources, products
 ## Ongoing Work
 - 2026 Coldcare Exploit Case Analysis
 - Bitcoin Archival Institute
+
+## Disclaimer
+This is a living, breathing, and young Project. The guiding principles outlined in this README do not necessarily reflect the current state. The governance documents represent more stringint standards we currently hold ourselves to. We use this outline to guide our efforts as we grow and improve.
