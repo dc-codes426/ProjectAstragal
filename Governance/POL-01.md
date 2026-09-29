@@ -42,3 +42,8 @@ Library Policy: POL-02
 We maintain a Research Policy governing our Research. This polic inlcudes but is not limited to:
 - defining the types of research we conduct
 - determining the requirements for sources supporting our research
+
+## Whitepapers
+
+We maintain a Whitepaper Policy governing our special publications.
+
