@@ -1,0 +1,770 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% BIP-39 Entropy Worksheet — Single Sheet, Paired Grid
+% Based on the Engineering Calculation Paper template
+% Original template by Dmitry Volynkin (CC BY-NC-SA 3.0)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[10pt,letterpaper]{article}
+
+\usepackage{wallpaper}
+\usepackage[left=1.0cm,right=1.0cm,top=1.8cm,bottom=1.2cm]{geometry}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage[T1]{fontenc}
+\usepackage{array}
+
+\usepackage{fancyhdr}
+\setlength{\headheight}{72pt}
+\pagestyle{fancy}\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+
+\setlength{\parindent}{0cm}
+
+\newcommand\BackgroundStructure{
+\setlength{\unitlength}{1mm}
+\setlength\fboxsep{0mm}
+\setlength\fboxrule{0.5mm}
+\put(7, 7){\fcolorbox{black}{blue!10}{\framebox(200,265){}}}
+\put(7, 277){\fcolorbox{black}{white!10}{\framebox(200, 19){}}}
+}
+
+\fancyhead[L]{\begin{tabular}{l r | l r | l r}
+\textbf{Project} & Wallet Seed Entropy &
+\textbf{Calc No.} & DE-256 &
+\textbf{Date} & \rule{2cm}{0.4pt} \\
+\textbf{Version} & 1.0 &
+\textbf{Prepared by} & \rule{2.5cm}{0.4pt} &
+\textbf{Page} & 1/1 \\
+\end{tabular}}
+
+\begin{document}
+\AddToShipoutPicture{\BackgroundStructure}
+
+% --- Instructions ---
+
+\noindent
+\begin{minipage}[t]{0.52\textwidth}
+\textbf{\large BIP-39 Entropy Generation}
+
+\vspace{3pt}
+\small
+Roll a d6. If \textbf{5 or 6}, discard and re-roll.
+When the result is \textbf{1--4}, write it in the next
+cell of the top row. Then write its two bits in the pair
+of cells directly below it. Fill all 128 top cells
+left to right, strip by strip. The bottom rows are
+your 256-bit entropy --- read them off in order.
+\end{minipage}\hfill
+\begin{minipage}[t]{0.18\textwidth}
+\centering
+\small\bfseries Lookup Key\\[3pt]
+\begin{tabular}{|c|c|c|}
+\hline
+\textsf{Die} & \textsf{bit} & \textsf{bit} \\
+\hline
+1 & 0 & 0 \\
+2 & 0 & 1 \\
+3 & 1 & 0 \\
+4 & 1 & 1 \\
+\hline
+\multicolumn{3}{|c|}{\small 5,\,6\,=\,re-roll} \\
+\hline
+\end{tabular}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.24\textwidth}
+\footnotesize
+\textbf{Properties:} 128 kept rolls
+$\times$ 2 bits = 256 bits.
+Zero arithmetic, zero bias.
+$\sim$192 rolls expected.\\[3pt]
+\textbf{After:} Enter 256 bits into
+air-gapped BIP-39 tool for SHA-256
+checksum \& word lookup.
+\textbf{Destroy this sheet.}
+\end{minipage}
+
+\par\vspace{14pt}
+\noindent\rule{\textwidth}{0.5pt}
+\par\vspace{4pt}
+
+% --- Paired grid strips ---
+
+\noindent\footnotesize\textsf{Rolls 1--32 \hfill bits 1--64}
+\par\vspace{1pt}
+\noindent
+\begin{tikzpicture}
+  \draw[line width=0.5pt] (0*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (0*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {1};
+  \draw[line width=0.5pt] (1*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (1*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {2};
+  \draw[line width=0.5pt] (2*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (2*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {3};
+  \draw[line width=0.5pt] (3*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (3*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {4};
+  \draw[line width=0.5pt] (4*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (4*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {5};
+  \draw[line width=0.5pt] (5*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (5*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {6};
+  \draw[line width=0.5pt] (6*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (6*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {7};
+  \draw[line width=0.5pt] (7*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (7*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {8};
+  \draw[line width=0.5pt] (8*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (8*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {9};
+  \draw[line width=0.5pt] (9*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (9*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {10};
+  \draw[line width=0.5pt] (10*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (10*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {11};
+  \draw[line width=0.5pt] (11*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (11*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {12};
+  \draw[line width=0.5pt] (12*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (12*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {13};
+  \draw[line width=0.5pt] (13*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (13*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {14};
+  \draw[line width=0.5pt] (14*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (14*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {15};
+  \draw[line width=0.5pt] (15*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (15*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {16};
+  \draw[line width=0.5pt] (16*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (16*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {17};
+  \draw[line width=0.5pt] (17*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (17*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {18};
+  \draw[line width=0.5pt] (18*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (18*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {19};
+  \draw[line width=0.5pt] (19*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (19*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {20};
+  \draw[line width=0.5pt] (20*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (20*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {21};
+  \draw[line width=0.5pt] (21*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (21*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {22};
+  \draw[line width=0.5pt] (22*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (22*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {23};
+  \draw[line width=0.5pt] (23*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (23*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {24};
+  \draw[line width=0.5pt] (24*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (24*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {25};
+  \draw[line width=0.5pt] (25*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (25*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {26};
+  \draw[line width=0.5pt] (26*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (26*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {27};
+  \draw[line width=0.5pt] (27*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (27*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {28};
+  \draw[line width=0.5pt] (28*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (28*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {29};
+  \draw[line width=0.5pt] (29*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (29*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {30};
+  \draw[line width=0.5pt] (30*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (30*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {31};
+  \draw[line width=0.5pt] (31*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (31*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {32};
+  \draw[line width=0.4pt] (0*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (1*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (2*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (3*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (4*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (5*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (6*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (7*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (8*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (9*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (10*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (11*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (12*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (13*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (14*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (15*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (16*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (17*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (18*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (19*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (20*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (21*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (22*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (23*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (24*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (25*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (26*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (27*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (28*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (29*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (30*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (31*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (32*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (33*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (34*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (35*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (36*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (37*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (38*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (39*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (40*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (41*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (42*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (43*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (44*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (45*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (46*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (47*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (48*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (49*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (50*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (51*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (52*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (53*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (54*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (55*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (56*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (57*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (58*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (59*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (60*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (61*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (62*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (63*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.8pt] (0, 0.70cm) rectangle (32*2*0.30cm, 0.70cm+1.10cm);
+  \draw[line width=0.8pt] (0, 0) rectangle (32*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (1*2*0.30cm, 0) -- (1*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (2*2*0.30cm, 0) -- (2*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (3*2*0.30cm, 0) -- (3*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (4*2*0.30cm, 0) -- (4*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (5*2*0.30cm, 0) -- (5*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (6*2*0.30cm, 0) -- (6*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (7*2*0.30cm, 0) -- (7*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (8*2*0.30cm, 0) -- (8*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (9*2*0.30cm, 0) -- (9*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (10*2*0.30cm, 0) -- (10*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (11*2*0.30cm, 0) -- (11*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (12*2*0.30cm, 0) -- (12*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (13*2*0.30cm, 0) -- (13*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (14*2*0.30cm, 0) -- (14*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (15*2*0.30cm, 0) -- (15*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (16*2*0.30cm, 0) -- (16*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (17*2*0.30cm, 0) -- (17*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (18*2*0.30cm, 0) -- (18*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (19*2*0.30cm, 0) -- (19*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (20*2*0.30cm, 0) -- (20*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (21*2*0.30cm, 0) -- (21*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (22*2*0.30cm, 0) -- (22*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (23*2*0.30cm, 0) -- (23*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (24*2*0.30cm, 0) -- (24*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (25*2*0.30cm, 0) -- (25*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (26*2*0.30cm, 0) -- (26*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (27*2*0.30cm, 0) -- (27*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (28*2*0.30cm, 0) -- (28*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (29*2*0.30cm, 0) -- (29*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (30*2*0.30cm, 0) -- (30*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (31*2*0.30cm, 0) -- (31*2*0.30cm, 0.70cm);
+\end{tikzpicture}
+\par\vspace{14pt}
+
+\noindent\footnotesize\textsf{Rolls 33--64 \hfill bits 65--128}
+\par\vspace{1pt}
+\noindent
+\begin{tikzpicture}
+  \draw[line width=0.5pt] (0*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (0*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {33};
+  \draw[line width=0.5pt] (1*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (1*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {34};
+  \draw[line width=0.5pt] (2*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (2*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {35};
+  \draw[line width=0.5pt] (3*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (3*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {36};
+  \draw[line width=0.5pt] (4*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (4*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {37};
+  \draw[line width=0.5pt] (5*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (5*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {38};
+  \draw[line width=0.5pt] (6*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (6*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {39};
+  \draw[line width=0.5pt] (7*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (7*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {40};
+  \draw[line width=0.5pt] (8*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (8*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {41};
+  \draw[line width=0.5pt] (9*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (9*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {42};
+  \draw[line width=0.5pt] (10*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (10*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {43};
+  \draw[line width=0.5pt] (11*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (11*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {44};
+  \draw[line width=0.5pt] (12*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (12*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {45};
+  \draw[line width=0.5pt] (13*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (13*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {46};
+  \draw[line width=0.5pt] (14*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (14*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {47};
+  \draw[line width=0.5pt] (15*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (15*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {48};
+  \draw[line width=0.5pt] (16*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (16*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {49};
+  \draw[line width=0.5pt] (17*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (17*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {50};
+  \draw[line width=0.5pt] (18*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (18*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {51};
+  \draw[line width=0.5pt] (19*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (19*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {52};
+  \draw[line width=0.5pt] (20*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (20*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {53};
+  \draw[line width=0.5pt] (21*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (21*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {54};
+  \draw[line width=0.5pt] (22*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (22*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {55};
+  \draw[line width=0.5pt] (23*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (23*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {56};
+  \draw[line width=0.5pt] (24*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (24*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {57};
+  \draw[line width=0.5pt] (25*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (25*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {58};
+  \draw[line width=0.5pt] (26*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (26*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {59};
+  \draw[line width=0.5pt] (27*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (27*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {60};
+  \draw[line width=0.5pt] (28*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (28*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {61};
+  \draw[line width=0.5pt] (29*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (29*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {62};
+  \draw[line width=0.5pt] (30*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (30*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {63};
+  \draw[line width=0.5pt] (31*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (31*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {64};
+  \draw[line width=0.4pt] (0*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (1*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (2*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (3*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (4*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (5*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (6*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (7*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (8*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (9*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (10*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (11*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (12*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (13*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (14*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (15*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (16*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (17*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (18*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (19*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (20*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (21*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (22*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (23*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (24*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (25*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (26*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (27*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (28*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (29*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (30*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (31*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (32*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (33*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (34*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (35*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (36*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (37*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (38*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (39*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (40*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (41*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (42*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (43*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (44*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (45*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (46*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (47*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (48*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (49*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (50*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (51*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (52*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (53*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (54*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (55*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (56*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (57*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (58*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (59*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (60*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (61*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (62*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (63*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.8pt] (0, 0.70cm) rectangle (32*2*0.30cm, 0.70cm+1.10cm);
+  \draw[line width=0.8pt] (0, 0) rectangle (32*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (1*2*0.30cm, 0) -- (1*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (2*2*0.30cm, 0) -- (2*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (3*2*0.30cm, 0) -- (3*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (4*2*0.30cm, 0) -- (4*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (5*2*0.30cm, 0) -- (5*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (6*2*0.30cm, 0) -- (6*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (7*2*0.30cm, 0) -- (7*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (8*2*0.30cm, 0) -- (8*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (9*2*0.30cm, 0) -- (9*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (10*2*0.30cm, 0) -- (10*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (11*2*0.30cm, 0) -- (11*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (12*2*0.30cm, 0) -- (12*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (13*2*0.30cm, 0) -- (13*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (14*2*0.30cm, 0) -- (14*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (15*2*0.30cm, 0) -- (15*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (16*2*0.30cm, 0) -- (16*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (17*2*0.30cm, 0) -- (17*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (18*2*0.30cm, 0) -- (18*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (19*2*0.30cm, 0) -- (19*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (20*2*0.30cm, 0) -- (20*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (21*2*0.30cm, 0) -- (21*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (22*2*0.30cm, 0) -- (22*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (23*2*0.30cm, 0) -- (23*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (24*2*0.30cm, 0) -- (24*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (25*2*0.30cm, 0) -- (25*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (26*2*0.30cm, 0) -- (26*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (27*2*0.30cm, 0) -- (27*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (28*2*0.30cm, 0) -- (28*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (29*2*0.30cm, 0) -- (29*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (30*2*0.30cm, 0) -- (30*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (31*2*0.30cm, 0) -- (31*2*0.30cm, 0.70cm);
+\end{tikzpicture}
+\par\vspace{14pt}
+
+\noindent\footnotesize\textsf{Rolls 65--96 \hfill bits 129--192}
+\par\vspace{1pt}
+\noindent
+\begin{tikzpicture}
+  \draw[line width=0.5pt] (0*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (0*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {65};
+  \draw[line width=0.5pt] (1*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (1*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {66};
+  \draw[line width=0.5pt] (2*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (2*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {67};
+  \draw[line width=0.5pt] (3*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (3*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {68};
+  \draw[line width=0.5pt] (4*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (4*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {69};
+  \draw[line width=0.5pt] (5*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (5*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {70};
+  \draw[line width=0.5pt] (6*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (6*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {71};
+  \draw[line width=0.5pt] (7*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (7*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {72};
+  \draw[line width=0.5pt] (8*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (8*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {73};
+  \draw[line width=0.5pt] (9*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (9*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {74};
+  \draw[line width=0.5pt] (10*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (10*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {75};
+  \draw[line width=0.5pt] (11*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (11*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {76};
+  \draw[line width=0.5pt] (12*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (12*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {77};
+  \draw[line width=0.5pt] (13*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (13*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {78};
+  \draw[line width=0.5pt] (14*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (14*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {79};
+  \draw[line width=0.5pt] (15*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (15*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {80};
+  \draw[line width=0.5pt] (16*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (16*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {81};
+  \draw[line width=0.5pt] (17*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (17*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {82};
+  \draw[line width=0.5pt] (18*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (18*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {83};
+  \draw[line width=0.5pt] (19*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (19*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {84};
+  \draw[line width=0.5pt] (20*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (20*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {85};
+  \draw[line width=0.5pt] (21*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (21*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {86};
+  \draw[line width=0.5pt] (22*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (22*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {87};
+  \draw[line width=0.5pt] (23*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (23*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {88};
+  \draw[line width=0.5pt] (24*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (24*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {89};
+  \draw[line width=0.5pt] (25*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (25*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {90};
+  \draw[line width=0.5pt] (26*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (26*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {91};
+  \draw[line width=0.5pt] (27*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (27*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {92};
+  \draw[line width=0.5pt] (28*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (28*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {93};
+  \draw[line width=0.5pt] (29*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (29*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {94};
+  \draw[line width=0.5pt] (30*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (30*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {95};
+  \draw[line width=0.5pt] (31*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (31*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {96};
+  \draw[line width=0.4pt] (0*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (1*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (2*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (3*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (4*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (5*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (6*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (7*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (8*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (9*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (10*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (11*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (12*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (13*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (14*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (15*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (16*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (17*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (18*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (19*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (20*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (21*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (22*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (23*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (24*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (25*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (26*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (27*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (28*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (29*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (30*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (31*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (32*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (33*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (34*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (35*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (36*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (37*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (38*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (39*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (40*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (41*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (42*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (43*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (44*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (45*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (46*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (47*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (48*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (49*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (50*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (51*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (52*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (53*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (54*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (55*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (56*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (57*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (58*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (59*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (60*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (61*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (62*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (63*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.8pt] (0, 0.70cm) rectangle (32*2*0.30cm, 0.70cm+1.10cm);
+  \draw[line width=0.8pt] (0, 0) rectangle (32*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (1*2*0.30cm, 0) -- (1*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (2*2*0.30cm, 0) -- (2*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (3*2*0.30cm, 0) -- (3*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (4*2*0.30cm, 0) -- (4*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (5*2*0.30cm, 0) -- (5*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (6*2*0.30cm, 0) -- (6*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (7*2*0.30cm, 0) -- (7*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (8*2*0.30cm, 0) -- (8*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (9*2*0.30cm, 0) -- (9*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (10*2*0.30cm, 0) -- (10*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (11*2*0.30cm, 0) -- (11*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (12*2*0.30cm, 0) -- (12*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (13*2*0.30cm, 0) -- (13*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (14*2*0.30cm, 0) -- (14*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (15*2*0.30cm, 0) -- (15*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (16*2*0.30cm, 0) -- (16*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (17*2*0.30cm, 0) -- (17*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (18*2*0.30cm, 0) -- (18*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (19*2*0.30cm, 0) -- (19*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (20*2*0.30cm, 0) -- (20*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (21*2*0.30cm, 0) -- (21*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (22*2*0.30cm, 0) -- (22*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (23*2*0.30cm, 0) -- (23*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (24*2*0.30cm, 0) -- (24*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (25*2*0.30cm, 0) -- (25*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (26*2*0.30cm, 0) -- (26*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (27*2*0.30cm, 0) -- (27*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (28*2*0.30cm, 0) -- (28*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (29*2*0.30cm, 0) -- (29*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (30*2*0.30cm, 0) -- (30*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (31*2*0.30cm, 0) -- (31*2*0.30cm, 0.70cm);
+\end{tikzpicture}
+\par\vspace{14pt}
+
+\noindent\footnotesize\textsf{Rolls 97--128 \hfill bits 193--256}
+\par\vspace{1pt}
+\noindent
+\begin{tikzpicture}
+  \draw[line width=0.5pt] (0*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (0*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {97};
+  \draw[line width=0.5pt] (1*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (1*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {98};
+  \draw[line width=0.5pt] (2*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (2*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {99};
+  \draw[line width=0.5pt] (3*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (3*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {100};
+  \draw[line width=0.5pt] (4*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (4*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {101};
+  \draw[line width=0.5pt] (5*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (5*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {102};
+  \draw[line width=0.5pt] (6*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (6*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {103};
+  \draw[line width=0.5pt] (7*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (7*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {104};
+  \draw[line width=0.5pt] (8*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (8*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {105};
+  \draw[line width=0.5pt] (9*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (9*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {106};
+  \draw[line width=0.5pt] (10*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (10*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {107};
+  \draw[line width=0.5pt] (11*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (11*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {108};
+  \draw[line width=0.5pt] (12*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (12*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {109};
+  \draw[line width=0.5pt] (13*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (13*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {110};
+  \draw[line width=0.5pt] (14*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (14*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {111};
+  \draw[line width=0.5pt] (15*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (15*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {112};
+  \draw[line width=0.5pt] (16*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (16*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {113};
+  \draw[line width=0.5pt] (17*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (17*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {114};
+  \draw[line width=0.5pt] (18*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (18*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {115};
+  \draw[line width=0.5pt] (19*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (19*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {116};
+  \draw[line width=0.5pt] (20*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (20*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {117};
+  \draw[line width=0.5pt] (21*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (21*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {118};
+  \draw[line width=0.5pt] (22*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (22*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {119};
+  \draw[line width=0.5pt] (23*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (23*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {120};
+  \draw[line width=0.5pt] (24*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (24*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {121};
+  \draw[line width=0.5pt] (25*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (25*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {122};
+  \draw[line width=0.5pt] (26*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (26*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {123};
+  \draw[line width=0.5pt] (27*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (27*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {124};
+  \draw[line width=0.5pt] (28*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (28*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {125};
+  \draw[line width=0.5pt] (29*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (29*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {126};
+  \draw[line width=0.5pt] (30*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (30*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {127};
+  \draw[line width=0.5pt] (31*2*0.30cm, 0.70cm) rectangle ++(2*0.30cm, 1.10cm);
+  \node[anchor=north west, font=\fontsize{4pt}{4.5pt}\selectfont\sffamily, text=black!40] at (31*2*0.30cm+0.02cm, 0.70cm+1.10cm-0.02cm) {128};
+  \draw[line width=0.4pt] (0*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (1*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (2*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (3*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (4*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (5*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (6*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (7*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (8*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (9*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (10*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (11*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (12*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (13*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (14*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (15*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (16*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (17*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (18*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (19*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (20*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (21*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (22*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (23*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (24*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (25*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (26*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (27*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (28*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (29*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (30*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (31*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (32*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (33*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (34*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (35*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (36*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (37*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (38*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (39*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (40*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (41*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (42*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (43*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (44*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (45*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (46*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (47*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (48*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (49*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (50*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (51*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (52*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (53*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (54*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (55*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (56*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (57*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (58*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (59*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (60*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (61*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (62*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.4pt] (63*0.30cm, 0) rectangle ++(0.30cm, 0.70cm);
+  \draw[line width=0.8pt] (0, 0.70cm) rectangle (32*2*0.30cm, 0.70cm+1.10cm);
+  \draw[line width=0.8pt] (0, 0) rectangle (32*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (1*2*0.30cm, 0) -- (1*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (2*2*0.30cm, 0) -- (2*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (3*2*0.30cm, 0) -- (3*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (4*2*0.30cm, 0) -- (4*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (5*2*0.30cm, 0) -- (5*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (6*2*0.30cm, 0) -- (6*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (7*2*0.30cm, 0) -- (7*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (8*2*0.30cm, 0) -- (8*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (9*2*0.30cm, 0) -- (9*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (10*2*0.30cm, 0) -- (10*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (11*2*0.30cm, 0) -- (11*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (12*2*0.30cm, 0) -- (12*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (13*2*0.30cm, 0) -- (13*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (14*2*0.30cm, 0) -- (14*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (15*2*0.30cm, 0) -- (15*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (16*2*0.30cm, 0) -- (16*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (17*2*0.30cm, 0) -- (17*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (18*2*0.30cm, 0) -- (18*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (19*2*0.30cm, 0) -- (19*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (20*2*0.30cm, 0) -- (20*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (21*2*0.30cm, 0) -- (21*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (22*2*0.30cm, 0) -- (22*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (23*2*0.30cm, 0) -- (23*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (24*2*0.30cm, 0) -- (24*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (25*2*0.30cm, 0) -- (25*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (26*2*0.30cm, 0) -- (26*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (27*2*0.30cm, 0) -- (27*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (28*2*0.30cm, 0) -- (28*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (29*2*0.30cm, 0) -- (29*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (30*2*0.30cm, 0) -- (30*2*0.30cm, 0.70cm);
+  \draw[line width=0.5pt] (31*2*0.30cm, 0) -- (31*2*0.30cm, 0.70cm);
+\end{tikzpicture}
+\par\vspace{14pt}
+
+
+\vfill
+\noindent\footnotesize
+\textbf{Reading order:} The bottom (bit) rows, read left to right across all four strips in order, are your 256-bit entropy value.
+Enter into an air-gapped BIP-39 tool (e.g.\ Ian Coleman offline, Coldcard) for checksum computation and 24-word mnemonic generation.
+
+\end{document}
