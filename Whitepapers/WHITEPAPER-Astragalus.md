@@ -123,10 +123,5 @@ We describe the Astragalus Method for Bitcoin seed generation.
 
 ---
 
-## Editor's notes
+<!-- TODO: Add citations for invariants of a secret, and verification over validation. -->
 
-Needs citation:
-
-- derivation of the secret invariant properties.
-- derivation of the ceremony requirements. Independence. Provenance.
-- verification over validation
