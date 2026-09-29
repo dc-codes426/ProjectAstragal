@@ -1,6 +1,6 @@
 ---
 organization: 'Project Astragal'
-documentID: WHITEPAPER-What-Makes-a-Secret.md
+documentID: RESEARCH-What-Makes-a-Secret.md
 title: 'What Makes a Secret'
 version: 0.01
 version_date: 2026-09-28
@@ -9,10 +9,10 @@ state: draft
 
 # What Makes a Secret
 
-*Whitepaper — draft*
+*Research — draft*
 
-Companion papers: *Verification over Validation* (how a user can establish these properties) and
-[WHITEPAPER-Astragalus](WHITEPAPER-Astragalus.md) (a ceremony that does so).
+Companion papers: [RESEARCH-Verification-over-Validation](RESEARCH-Verification-over-Validation.md) (how a user
+can establish these properties) and [WHITEPAPER-Astragalus](../Whitepapers/WHITEPAPER-Astragalus.md) (a ceremony that does so).
 
 
 ## Abstract
