@@ -2,8 +2,8 @@
 organization: 'Project Astragal'
 documentID: POL-01
 title: 'Project Astragal Policy'
-version: 0.01
-version_date: 2026-09-26
+version: 0.02
+version_date: 2026-09-28
 state: draft
 ---
 
@@ -25,6 +25,7 @@ ff
 
 * POLICY
 * INCIDENT_REPORTS
+* RESEARCH
 * WHITEPAPER
 
 ## Library
