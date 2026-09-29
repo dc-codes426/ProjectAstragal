@@ -31,29 +31,14 @@ An Astragalus is the ancient precursor to dice. The initial findings of the Proj
 # Project Architecture
 This architecture loosely maps to the Project repository structure. Each layer of the architecture as listed here support the one below it.
 
-## (In Development) Project Governance
-Includes project policies, methodologies, etc. It defines how we conduct and control our work, including primers on the founding principles.
+## docs
 
-## (Future Roadmap) Library
-We maintain a library of other projects, organizations, original sources, and other resources that support our mission. All of our work is traceable to information contained within this library.
-- Other Projects and Companies in this space
-- Other published research
-- Other resources for users
-- Other products and tools in this space
-
-## (Future Roadmap) Research and Reviews
-We perform research within our scope and provide our findings. All work must be supported by sources in the Library.
-- Reviews of Other Projects: We evaluate other organizations working in this space. We assess scope, quality, bias, and guiding principles of these organizations. We strive for neutrality in this work, but fully acknowledge our own bias when evaluating alternative organizations. We value collaboration, and this work is intended to foster alignment between organizations as well as support bitcoin users.
-- Product Reviews: We evaluate specific products, tools, and solutions provided by external parties. We strive for neutrality in this work, but fully acknowledge our own bias when evaluating alternative solutions. The intent of this work is to identify gaps in the ecosystem.
-- Metareviews and Incident Analysis: We provide basic summary and assessment of existing research, as well as events. We perform in-depth analysis of relevant exploits.
-- Original Research: This is work which makes novel contributions to the field. This work must all rest on writings from the other Research categories or from the Library.
-
-## (Future Roadmap) Solutions
-Where our research identifies gaps, we fill them. We provide resources, products, and solutions that help Bitcoin users. Every tool traces to a gap identified in the research.
+Repository of published work.
 
 ## Ongoing Work
-- 2026 Coldcare Exploit Case Analysis
-- Bitcoin Archival Institute
 
-## Disclaimer
-This is a living, breathing, and young Project. The guiding principles outlined in this README do not necessarily reflect the current state. The governance documents represent more stringint standards we currently hold ourselves to. We use this outline to guide our efforts as we grow and improve.
+- 2026 Coldcare Exploit Case Analysis
+
+
+
+
